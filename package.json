@@ -3,5 +3,17 @@
   "version": "0.0.0",
   "description": "calculate tree edit distance and edit operations",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
-  "repository": "kemitchell/zhang-shasha.js"
+  "repository": "kemitchell/zhang-shasha.js",
+  "files": [
+    "index.js",
+    "distance.js",
+    "mapping.js"
+  ],
+  "scripts": {
+    "build": "preprocess algorithm.js > distance.js && preprocess algorithm.js -MAPPING=1 > mapping.js",
+    "prepublish": "npm run build"
+  },
+  "devDependencies": {
+    "preprocessor": "^1.4.0"
+  }
 }
