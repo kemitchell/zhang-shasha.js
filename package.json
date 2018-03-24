@@ -11,9 +11,14 @@
   ],
   "scripts": {
     "build": "preprocess algorithm.js > distance.js && preprocess algorithm.js -MAPPING=1 > mapping.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "pretest": "npm run build",
+    "test": "node test.js"
   },
   "devDependencies": {
-    "preprocessor": "^1.4.0"
+    "deep-equal": "^1.0.1",
+    "preprocessor": "^1.4.0",
+    "tape": "^4.9.0",
+    "tree-edit-distance-tests": "^1.0.0-3"
   }
 }
