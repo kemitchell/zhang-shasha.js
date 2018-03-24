@@ -1,0 +1,7 @@
+{
+  "name": "zhang-shasha",
+  "version": "0.0.0",
+  "description": "calculate tree edit distance and edit operations",
+  "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
+  "repository": "kemitchell/zhang-shasha.js"
+}
