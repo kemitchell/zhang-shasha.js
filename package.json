@@ -30,5 +30,21 @@
     "replace-require-self": "^1.1.1",
     "tape": "^4.9.0",
     "tree-edit-distance-tests": "^1.0.0-3"
-  }
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "licensezero": [
+    {
+      "license": {
+        "jurisdiction": "US-CA",
+        "name": "Kyle E. Mitchell",
+        "projectID": "bede7f97-c83f-411c-8bd0-e4bc66ee1370",
+        "publicKey": "1589d5a1b9b6b6ca26515b65fe9f725410c9f7fa41bcd9954a84d76f47cc6482",
+        "terms": "reciprocal",
+        "version": "2.0.1",
+        "homepage": "https://github.com/kemitchell/zhang-shasha.js"
+      },
+      "licensorSignature": "5dc71db59c961b28fcc266972c048f6b2ef4d5fad29ca947e63820c7ddcd07a19c742cbad8abe25f95b9b3e04ce319fc8c63e77b5197d983b3e6792a7e57c007",
+      "agentSignature": "6ad4506d556c4b4961da454df28b8c14a23b75b832ea45f766d8e2e9b3f7d8216eeda17cc3f6bedeb71eaad42ff9939586ea1722dd301badf0b42af0698db60c"
+    }
+  ]
 }

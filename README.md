@@ -2,6 +2,8 @@ This package implements the edit distance algorithm for ordered, labeled trees d
 
 Tim Henderson's [Python implementation](https://github.com/timtadh/zhang-shasha), with Erick Fonseca's approach to concatenating edit operations, directly inspired this JavaScript implementation.
 
+# Usage
+
 The package exports two functions, `distance` and `mapping`.  `distance` returns the edit distance from one tree to another.  `mapping` returns an array of edit operations for transforming one tree into another.
 
 ```javascript
@@ -63,3 +65,9 @@ assert.deepEqual(
   ],
 )
 ```
+
+# Licensing
+
+This package is to free to use in open source under the terms of the [License Zero Reciprocal Public License](./LICENSE).
+
+Licenses for use in closed and proprietary software are available [via licensezero.com](https://licensezero.com/projects/bede7f97-c83f-411c-8bd0-e4bc66ee1370).
