@@ -23,9 +23,9 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
 
   // Initialize Matrices
   var treedist = initializeMatrix(orderOfT1, orderOfT2)
-// #ifdef MAPPING
+  // #ifdef MAPPING
   var operations = initializeMatrix(orderOfT1, orderOfT2, true)
-// #endif
+  // #endif
 
   // Paper: "Main loop"
   for (var iprime = 0; iprime < LR_keyroots1.length; iprime++) {
@@ -34,11 +34,11 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
     }
   }
 
-// #ifdef MAPPING
+  // #ifdef MAPPING
   return operations[orderOfT1 - 1][orderOfT2 - 1].reverse()
-// #else
+  // #else
   return treedist[orderOfT1 - 1][orderOfT2 - 1]
-// #endif
+  // #endif
 
   // Paper: "The computation of treedist(i, j)."
   function compute_treedist (i, j) {
@@ -47,9 +47,9 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
     var jOffset = T2l[j] - 1
     var jRange = j - T2l[j] + 2
     var forestDistances = initializeMatrix(iRange, jRange)
-// #ifdef MAPPING
+    // #ifdef MAPPING
     var forestOperations = initializeMatrix(iRange, jRange, true)
-// #endif
+    // #endif
     var node
     var i1, j1
 
@@ -59,13 +59,13 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
         forestDistances[i1 - 1][0] +
         removeCost(node)
       )
-// #ifdef MAPPING
+      // #ifdef MAPPING
       forestOperations[i1][0] = (
         forestOperations[i1 - 1][0].concat({
           type: REMOVE, t1: node, t2: null
         })
       )
-// #endif
+      // #endif
     }
 
     for (j1 = 1; j1 < jRange; j1++) {
@@ -74,13 +74,13 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
         forestDistances[0][j1 - 1] +
         insertCost(node)
       )
-// #ifdef MAPPING
+      // #ifdef MAPPING
       forestOperations[0][j1] = (
         forestOperations[0][j1 - 1].concat({
           type: INSERT, t1: null, t2: node
         })
       )
-// #endif
+      // #endif
     }
 
     for (i1 = 1; i1 < iRange; i1++) {
@@ -98,7 +98,7 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
           )
           min = Math.min(remove, insert, update)
           forestDistances[i1][j1] = min
-// #ifdef MAPPING
+          // #ifdef MAPPING
           if (min === remove) {
             forestOperations[i1][j1] = forestOperations[i1 - 1][j1]
               .concat({type: REMOVE, t1: T1node, t2: null})
@@ -112,7 +112,7 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
               .concat({type: type, t1: T1node, t2: T2node})
           }
           operations[i1 + iOffset][j1 + jOffset] = forestOperations[i1][j1]
-// #endif
+          // #endif
           treedist[i1 + iOffset][j1 + jOffset] = forestDistances[i1][j1]
         } else {
           remove = forestDistances[i1 - 1][j1] + removeCost(T1node)
@@ -125,7 +125,7 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
           )
           min = Math.min(remove, insert, update)
           forestDistances[i1][j1] = min
-// #ifdef MAPPING
+          // #ifdef MAPPING
           if (min === remove) {
             forestOperations[i1][j1] = forestOperations[i1 - 1][j1]
               .concat({type: REMOVE, t1: T1node, t2: null})
@@ -136,7 +136,7 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
             forestOperations[i1][j1] = forestOperations[p][q]
               .concat(operations[i1 + iOffset][j1 + jOffset])
           }
-// #endif
+          // #endif
         }
       }
     }
