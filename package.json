@@ -4,6 +4,7 @@
   "description": "calculate tree edit distance and edit operations",
   "author": "Kyle E. Mitchell <kyle@kemitchell.com> (https://kemitchell.com/)",
   "repository": "kemitchell/zhang-shasha.js",
+  "homepage": "https://github.com/kemitchell/zhang-shasha.js",
   "keywords": [
     "algorithms",
     "diff",
