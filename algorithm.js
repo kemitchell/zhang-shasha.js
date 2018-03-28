@@ -99,17 +99,17 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
           min = Math.min(remove, insert, update)
           forestDistances[i1][j1] = min
           // #ifdef MAPPING
-          if (min === remove) {
+          if (min === update) {
+            var type = forestDistances[i1][j1] === forestDistances[i1 - 1][j1 - 1]
+              ? MATCH : UPDATE
+            forestOperations[i1][j1] = forestOperations[i1 - 1][j1 - 1]
+              .concat({type: type, t1: T1node, t2: T2node})
+          } else if (min === remove) {
             forestOperations[i1][j1] = forestOperations[i1 - 1][j1]
               .concat({type: REMOVE, t1: T1node, t2: null})
           } else if (min === insert) {
             forestOperations[i1][j1] = forestOperations[i1][j1 - 1]
               .concat({type: INSERT, t1: null, t2: T2node})
-          } else {
-            var type = forestDistances[i1][j1] === forestDistances[i1 - 1][j1 - 1]
-              ? MATCH : UPDATE
-            forestOperations[i1][j1] = forestOperations[i1 - 1][j1 - 1]
-              .concat({type: type, t1: T1node, t2: T2node})
           }
           operations[i1 + iOffset][j1 + jOffset] = forestOperations[i1][j1]
           // #endif
@@ -126,15 +126,15 @@ module.exports = function (rootOfT1, rootOfT2, childrenOf, insertCost, removeCos
           min = Math.min(remove, insert, update)
           forestDistances[i1][j1] = min
           // #ifdef MAPPING
-          if (min === remove) {
+          if (min === update) {
+            forestOperations[i1][j1] = forestOperations[p][q]
+              .concat(operations[i1 + iOffset][j1 + jOffset])
+          } else if (min === remove) {
             forestOperations[i1][j1] = forestOperations[i1 - 1][j1]
               .concat({type: REMOVE, t1: T1node, t2: null})
           } else if (min === insert) {
             forestOperations[i1][j1] = forestOperations[i1][j1 - 1]
               .concat({type: INSERT, t1: null, t2: T2node})
-          } else {
-            forestOperations[i1][j1] = forestOperations[p][q]
-              .concat(operations[i1 + iOffset][j1 + jOffset])
           }
           // #endif
         }
